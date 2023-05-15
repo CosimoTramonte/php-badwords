@@ -1,3 +1,15 @@
+<?php
+
+$enteredText = $_POST["enteredText"];
+$explodedEnteredText = explode(' ', $enteredText);
+
+$censoredWord = $_POST["censoredWord"];
+$newText = str_replace($censoredWord, "***", $enteredText, $count);
+$explodedNewText = explode(' ', $newText);
+$totalWords = count($explodedNewText) - $count;
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +21,25 @@
 </head>
 <body>
 
+    <div class="container py-5">
 
+        <div>
+            <h3>This is your text</h3>
+            <p><?php echo $enteredText ?></p>
+            <h6>The length of the text is <?php echo count($explodedEnteredText) ?> words</h6>
+            <h6>The length of the text is <?php echo strlen($enteredText) ?> </h6>
+        </div>
+
+        <div class="my-5">
+            <h3>This is your New text</h3>
+            <p><?php echo $newText ?></p>
+            <h6>The length of the text is <?php echo $totalWords ?> words</h6>
+            <h6>there are <?php echo $count ?> censured words</h6>
+            <h6>The length of the text is <?php echo strlen($newText) ?> </h6>
+        </div>
+
+
+    </div>
     
 </body>
 </html>
